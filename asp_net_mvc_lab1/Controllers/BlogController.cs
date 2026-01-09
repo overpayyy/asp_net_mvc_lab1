@@ -7,6 +7,13 @@ namespace aspNetMVC.Controllers
     {
         private readonly ILogger<BlogController> _logger;
 
+        private static readonly List<BlogArticleViewModel> _articles = new()
+        {
+            new BlogArticleViewModel { Title = "Welcome to My Blog", Description = "Intro post about the blog." },
+            new BlogArticleViewModel { Title = "Learning ASP.NET MVC", Description = "Basics of ASP.NET MVC." },
+            new BlogArticleViewModel { Title = "Understanding Routing", Description = "How routing works." }
+        };
+
         public BlogController(ILogger<BlogController> logger)
         {
             _logger = logger;
@@ -14,11 +21,7 @@ namespace aspNetMVC.Controllers
 
         public IActionResult Index()
         {
-            return View(new BlogViewModel()
-            {
-                Title = "Welcome to My Blog",
-                Description = "This is a simple blog application built with ASP.NET MVC."
-            });
+            return View(_articles);
         }
     }
 }
