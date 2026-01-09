@@ -8,7 +8,9 @@
     @foreach (var article in Model)
     {
         <li class="list-group-item">
-            <h5>@article.Title</h5>
+            <a asp-action="Article" asp-route-id="@article.Id" class="text-decoration-none text-dark">
+                <h5>@article.Title</h5>
+            </a>
             <p class="mb-1 text-muted">@article.Description</p>
         </li>
     }
